@@ -1,1 +1,1 @@
-# CoreTextBCI
+# CorTextBCI
