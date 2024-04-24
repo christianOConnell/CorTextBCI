@@ -20,7 +20,7 @@ def readEEG(filename, dataCube):
 
             splitRow = row.strip().split(',')
             #print("row",splitRow)
-            if curr[0] == 'l':
+            if curr[0] == 'l' or curr[0] == -1:
                 curr[0] = -1  # -1 for left
             else:
                 curr[0] = 1  # 1 for right
@@ -83,15 +83,15 @@ def main():
     theDataCube = readMarkers(markerCSV)
     #print(theDataCube)
     theDataCube = readEEG(eegCSV, theDataCube)
-    print(theDataCube)
+    #print(theDataCube)
     for i in range(len(theDataCube)):
-        for j in range(len(theDataCube[i]),1):
-            for k in range(len(theDataCube[i][j])):
-                print(theDataCube[i][j][k], end=' ')
+        for j in range(0,len(theDataCube[i])):
+            if j == 0:
+                print(theDataCube[i][0])
+            else :
+                for k in range(len(theDataCube[i][j])):
+                    print(theDataCube[i][j][k], end=' ')
             print()
-        print()
 
 
 main()
-
-
